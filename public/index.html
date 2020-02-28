@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tic Tac Toe</title>
+        <link rel="stylesheet" href="styles.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1>Tic Tac Toe</h1>
+        <table>
+            <tr>
+                <td id="a3"></td>
+                <td id="b3" class="vert"></td>
+                <td id="c3"></td>
+            </tr>
+            <tr>
+                <td id="a2" class="hori"></td>
+                <td id="b2" class="vert hori"></td>
+                <td id="c2" class="hori"></td>
+            </tr>
+            <tr>
+                <td id="a1"></td>
+                <td id="b1" class="vert"></td>
+                <td id="c1"></td>
+            </tr>
+        </table>
+        <div class="opt">
+            <button onclick="create()">
+            Create Game
+            </button>
+            <button onclick="join()">
+            Join Game
+            </button>
+            <p class="msg"></p>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+        <script src="scripts.js"></script>
+    </body>
+</html>
