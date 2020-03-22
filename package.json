@@ -1,7 +1,7 @@
 {
   "name": "tictactoe",
-  "version": "1.0.0",
-  "main": "app.js",
+  "version": "1.0.1",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "debug": "nodemon server.js -e js,css,md,html,png,json"
