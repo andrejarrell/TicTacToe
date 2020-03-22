@@ -14,7 +14,7 @@ const wins = [
 
 let check = {
     redundancy: (data, position) => {
-        let plays = data.host.plays.concat(data.guest.plays);
+        let plays = [...data.host.plays, ...data.guest.plays];
         return plays.includes(position) ? true : false;
     },
     winner: (data, player) => {
@@ -29,7 +29,7 @@ let check = {
         return false;
     },
     tie: data => {
-        let plays = data.host.plays.concat(data.guest.plays);
+        let plays = [...data.host.plays, ...data.guest.plays];
         return plays.length === 9 ? true : false;
     }
 };
@@ -49,9 +49,7 @@ let game = {
         let games = Object.keys(game.data);
         return games.includes(room) ? game.data[room] : null;
     },
-    end: room => {
-        delete game.data[room];
-    }
+    end: room => delete game.data[room]
 };
 
 let create = socket => {
@@ -59,9 +57,9 @@ let create = socket => {
     let oldRoom = Object.keys(socket.rooms)[0];
     socket.leave(oldRoom);
     socket.join(room);
-    socket.emit('erase');
+    socket.emit('reset');
     socket.emit('message', 'success', `Created game: ${room}`);
-    socket.emit('members', 1);
+    socket.emit('total', 1);
     socket.emit('room', room);
     socket.emit('player', 'host');
     game.data[room] = {
@@ -84,9 +82,9 @@ let join = (io, socket, room) => {
         let oldRoom = Object.keys(socket.rooms)[0];
         socket.leave(oldRoom);
         socket.join(room);
-        socket.emit('erase');
+        socket.emit('reset');
         io.to(room).emit('message', 'success', `Both players are ready! Host starts!`);
-        io.to(room).emit('members', 2);
+        io.to(room).emit('total', 2);
         socket.emit('room', room);
         socket.emit('player', 'guest');
         data.guest.id = socket.id;

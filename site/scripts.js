@@ -4,7 +4,7 @@ let join = () => socket.emit('join', prompt('Enter your room ID!'));
 let create = () => socket.emit('create');
 let play = position => socket.emit('play', position);
 
-socket.on('members', number => $('#members').text(`👥 ${number}/2`));
+socket.on('total', number => $('#total').text(`👥 ${number}/2`));
 
 socket.on('room', room => $('#room').text(`🔑 ${room}`));
 
@@ -21,4 +21,4 @@ socket.on('message', (type, string) => {
     $('#message').text(`${emoji} ${string}`);
 });
 
-socket.on('erase', () => $('.picture').remove());
+socket.on('reset', () => $('.picture').remove());
