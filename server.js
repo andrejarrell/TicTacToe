@@ -119,7 +119,6 @@ let play = (io, socket, position) => {
             io.to(room).emit('play', position, 'host');
             io.to(room).emit('message', 'success', `Host played ${position}. Guest it\'s your turn!`);
         };
-        console.log(data);
     } else {
         if (guest.id !== socket.id) return socket.emit('message', 'warning', 'It\'s not your turn!');
         if (check.redundancy(data, position)) return socket.emit('message', 'warning', 'That has already been played!');
@@ -133,7 +132,6 @@ let play = (io, socket, position) => {
             io.to(room).emit('play', position, 'guest');
             io.to(room).emit('message', 'success', `Guest played ${position}. Host it\'s your turn!`);
         };
-        console.log(data);
     };
 };
 
