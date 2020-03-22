@@ -1,12 +1,12 @@
 {
   "name": "tictactoe",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "debug": "nodemon server.js -e js,css,md,html,png,json"
   },
-  "author": "Andre Jarrell <mail@andre.gg> (https://andre.gg)",
+  "author": "Andre Jarrell <mail@andrejarrell.com> (https://andrejarrell.com)",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",

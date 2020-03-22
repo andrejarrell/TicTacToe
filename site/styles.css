@@ -1,0 +1,73 @@
+h1 {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+td {
+    width: 100px;
+    height: 100px;
+}
+  
+table {
+    margin: 5px auto;
+}
+
+.vertical {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+  
+.horizontal {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+  
+.picture {
+    max-width: 100%;
+}
+
+.alert {
+    display: inline-block;
+}
+  
+#menu {
+    text-align: center;
+    margin: 20px;
+}
+
+#info {
+    text-align: center;
+}
+
+#info p {
+    padding: 0px 5px 0px 5px;
+    vertical-align: top;
+    display: inline-block;
+}
+
+/* For github corner */
+
+.github-corner:hover .octo-arm{
+    animation:octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave{
+    0%,100%{
+        transform:rotate(0)
+    }
+    20%,60%{
+        transform:rotate(-25deg)
+    }
+    40%,80%{
+        transform:rotate(10deg)
+    }
+}
+
+@media (max-width:500px){
+    .github-corner:hover .octo-arm{
+        animation:none
+    }
+    .github-corner .octo-arm{
+        animation:octocat-wave 560ms ease-in-out
+    }
+}
