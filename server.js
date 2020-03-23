@@ -58,7 +58,7 @@ let create = socket => {
     socket.leave(oldRoom);
     socket.join(room);
     socket.emit('reset');
-    socket.emit('message', 'success', `Created game: ${room}`);
+    socket.emit('invite', room);
     socket.emit('total', 1);
     socket.emit('room', room);
     socket.emit('player', 'host');

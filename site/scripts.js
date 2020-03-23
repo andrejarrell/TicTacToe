@@ -15,6 +15,14 @@ socket.on('play', (position, player) => {
     $(`#${position}`).prepend(`<img class="picture" src="${picture}">`);
 });
 
+socket.on('invite', room => {
+    let link = `${document.domain}?g=${room}`;
+    $('#message').html(`
+        💬 Created game: ${room}<br>
+        🔗 <a target="_blank" href="https://${link}">${link}</a>
+    `);
+});
+
 socket.on('message', (type, string) => {
     let emoji = type === 'success' ? '💬' : '⚠️';
     $('#message').attr('class', `alert alert-${type}`);
@@ -22,3 +30,19 @@ socket.on('message', (type, string) => {
 });
 
 socket.on('reset', () => $('.picture').remove());
+
+const getParam = item => {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (let i=0; i<vars.length; i++) {
+        let pair = vars[i].split("=");
+        if (pair[0] == item) return pair[1];
+    };
+    return false;
+};
+
+let invite = getParam('g');
+if (invite) {
+    let accepted = confirm(`Press OK to join game: ${invite}`);
+    accepted ? socket.emit('join', invite) : null;
+};
