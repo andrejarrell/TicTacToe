@@ -6,7 +6,7 @@ module.exports = game = {
         ['a2', 'b2', 'c2'], ['a3', 'b3', 'c3'],
         ['a1', 'b2', 'c3'], ['a3', 'b2', 'c1']
     ],
-    generate: () => {
+    code: () => {
         let entries = [];
         let combos = [1, 2, 3, 4, 5, 'a', 'b', 'c', 'd', 'e'];
         for (let x = 0; x < 5; x++) {

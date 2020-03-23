@@ -1,9 +1,9 @@
 module.exports = check = {
-    redundancy: (game, position) => {
+    play: (game, position) => {
         let plays = [...game.host.plays, ...game.guest.plays];
         return plays.includes(position) ? true : false;
     },
-    winner: (game, wins, player) => {
+    win: (game, wins, player) => {
         for (let combo of wins) {
             let plays = game[player].plays;
             matches = [];

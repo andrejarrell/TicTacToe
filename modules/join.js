@@ -1,6 +1,6 @@
 module.exports = join = (data, io, socket, room) => {
     let game = data.game.find(room);
-    if (info && socket.id !== info.host.id) {
+    if (game && socket.id !== game.host.id) {
         let oldRoom = Object.keys(socket.rooms)[0];
         socket.leave(oldRoom);
         socket.join(room);

@@ -12,14 +12,14 @@ data
 ├── game 
 │   ├── cache (object)
 │   ├── wins (array)
-│   ├── generate (function)
+│   ├── code (function)
 │   ├── find (function)
 │   ├── end (function)
 ├── join (function)
 ├── play (function)
 ├── check (function)
-│   ├── redundancy (function)
-│   ├── winner (function)
+│   ├── play (function)
+│   ├── win (function)
 │   ├── tie (function)
 ├── create (function)
 ```
