@@ -4,6 +4,36 @@
 
 # Welcome to TicTacToe
 
-This is a multiplayer web app based on web sockets. This allows us to send data in real time between the server and clients.
+⚒️ This game was created with `socket.io` and `express`
 
-Feel free to remix it or make a pull request if there is a bug.
+`Data Structure`
+```
+data 
+├── game 
+│   ├── cache (object)
+│   ├── wins (array)
+│   ├── generate (function)
+│   ├── find (function)
+│   ├── end (function)
+├── join (function)
+├── play (function)
+├── check (function)
+│   ├── redundancy (function)
+│   ├── winner (function)
+│   ├── tie (function)
+├── create
+```
+
+`Cache Structure`
+```
+cache
+├── id (string)
+│   ├── ready (boolean)
+│   ├── host
+│   │   ├── turn (boolean)
+│   │   ├── id (string)
+│   │   ├── plays (array)
+│   ├── guest
+│   │   ├── id (string)
+│   │   ├── plays (array)
+```

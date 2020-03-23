@@ -1,5 +1,5 @@
 module.exports = join = (data, io, socket, room) => {
-    let info = data.game.find(room);
+    let game = data.game.find(room);
     if (info && socket.id !== info.host.id) {
         let oldRoom = Object.keys(socket.rooms)[0];
         socket.leave(oldRoom);
@@ -9,9 +9,9 @@ module.exports = join = (data, io, socket, room) => {
         io.to(room).emit('total', 2);
         socket.emit('room', room);
         socket.emit('player', 'guest');
-        info.guest.id = socket.id;
-        info.ready = true;
-        info.host.turn = true;
+        game.guest.id = socket.id;
+        game.ready = true;
+        game.host.turn = true;
     } else {
         socket.emit('message', 'warning', 'Invalid code!');
     };
