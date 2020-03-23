@@ -1,4 +1,4 @@
-let join = (data, io, socket, room) => {
+module.exports = join = (data, io, socket, room) => {
     let info = data.game.find(room);
     if (info && socket.id !== info.host.id) {
         let oldRoom = Object.keys(socket.rooms)[0];
@@ -16,5 +16,3 @@ let join = (data, io, socket, room) => {
         socket.emit('message', 'warning', 'Invalid code!');
     };
 };
-
-module.exports = join;
