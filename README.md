@@ -21,7 +21,7 @@ data
 │   ├── redundancy (function)
 │   ├── winner (function)
 │   ├── tie (function)
-├── create
+├── create (function)
 ```
 
 `Cache Structure`
