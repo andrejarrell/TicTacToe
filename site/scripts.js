@@ -4,11 +4,10 @@ let join = () => socket.emit('join', prompt('Enter your room ID!'));
 let create = () => socket.emit('create');
 let play = position => socket.emit('play', position);
 
-socket.on('total', number => $('#total').text(`👥 ${number}/2`));
-
+socket.on('reset', () => $('.picture').remove());
 socket.on('room', room => $('#room').text(`🔑 ${room}`));
-
 socket.on('player', name => $('#player').text(`👤 ${name}`));
+socket.on('total', number => $('#total').text(`👥 ${number}/2`));
 
 socket.on('play', (position, player) => {
     let picture = player === 'host' ? 'images/x.png' : 'images/o.png';
@@ -30,9 +29,7 @@ socket.on('message', (type, string) => {
     $('#message').text(`${emoji} ${string}`);
 });
 
-socket.on('reset', () => $('.picture').remove());
-
-const getParam = item => {
+let getParam = item => {
     var query = window.location.search.substring(1);
     var vars = query.split("&");
     for (let i=0; i<vars.length; i++) {
