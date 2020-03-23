@@ -17,6 +17,7 @@ socket.on('play', (position, player) => {
 
 socket.on('invite', room => {
     let link = `${document.domain}?g=${room}`;
+    $('#message').attr('class', `alert alert-success`);
     $('#message').html(`
         💬 Created game: ${room}<br>
         🔗 <a target="_blank" href="https://${link}">${link}</a>
