@@ -1,6 +1,6 @@
 let socket = io();
 
-let join = () => socket.emit('join', prompt('Enter your room ID!'));
+let join = code => socket.emit('join', code);
 let create = () => socket.emit('create');
 let play = position => socket.emit('play', position);
 
@@ -15,11 +15,11 @@ socket.on('play', (position, player) => {
 });
 
 socket.on('invite', room => {
-    let link = `${document.domain}?g=${room}`;
+    let link = `${document.URL}?g=${room}`;
     $('#message').attr('class', `alert alert-success`);
     $('#message').html(`
         💬 Created game: ${room}<br>
-        🔗 <a target="_blank" href="https://${link}">${link}</a>
+        🔗 Created invite link: <a target="_blank" href="${link}">${room}</a>
     `);
 });
 
@@ -41,6 +41,7 @@ let getParam = item => {
 
 let invite = getParam('g');
 if (invite) {
-    let accepted = confirm(`Press OK to join game: ${invite}`);
-    accepted ? socket.emit('join', invite) : null;
+    $('#invite-code').text(`You've been invited to a game!`);
+    $('#invite').modal({show: true});
+    $('#invite-button').attr('onclick', `join('${invite}')`);
 };
