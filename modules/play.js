@@ -29,7 +29,7 @@ module.exports = play = (data, io, socket, position) => {
         host.turn = true;
         if (data.check.win(game, data.game.wins, 'guest')) {
             io.to(room).emit('message', 'success', `Guest is the winner!`);
-            io.to(room).emit('play', position, 'host');
+            io.to(room).emit('play', position, 'guest');
             data.game.end(room);
         } else {
             io.to(room).emit('play', position, 'guest');
