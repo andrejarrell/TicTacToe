@@ -6,7 +6,7 @@
 
 ⚒️ This game was created with `socket.io` and `express`
 
-`Data Structure`
+`💾 Data Structure - Server`
 ```
 data 
 ├── game 
@@ -26,7 +26,7 @@ data
 ├── disconnect (function)
 ```
 
-`Cache Structure`
+`💾 Cache Structure - Server`
 ```
 cache
 ├── id (string)
