@@ -20,11 +20,11 @@
 
 4. Run application
 
-  * Production `npm run start`
+   - Production `npm run start`
 
-  * Debug `npm run debug`
+   - Debug `npm run debug`
 
-## Back End
+## Back End:
 
 This game takes a modular approach with it's file structure.
 
@@ -86,7 +86,7 @@ cache
 │   │   ├── plays (array)
 ```
 
-## Front End
+## Front End:
 
 🔄 `Event Listeners`
 
