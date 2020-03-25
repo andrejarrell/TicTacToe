@@ -4,11 +4,55 @@
 
 # Welcome to TicTacToe
 
-⚒️ Back End Includes: `socket.io` + `express`
+## Tools used:
 
-⚒️ Front End Includes: `jquery` + `bootstrap` + `socket.io`
+⚒️ Back End: `socket.io` + `express`
 
-`💾 Data Structure - Server`
+⚒️ Front End: `jquery` + `bootstrap` + `socket.io`
+
+## Setup for running locally:
+
+1. Download repository
+
+2. Install [Node.js](https://nodejs.org/en/download/)
+
+3. Install dependencies: `npm i`
+
+4. Run application
+
+  * Production `npm run start`
+
+  * Debug `npm run debug`
+
+## Back End
+
+This game takes a modular approach with it's file structure.
+
+All the modules are put into the data object.
+
+```js
+let data = {
+    game: require('./modules/game.js'),
+    join: require('./modules/join.js'),
+    play: require('./modules/play.js'),
+    check: require('./modules/check.js'),
+    create: require('./modules/create.js'),
+    rematch: require('./modules/rematch.js'),
+    disconnect: require('./modules/disconnect')
+};
+```
+
+🔄 `Event Listeners`
+
+```
+▪️ Join
+▪️ Play
+▪️ Create
+▪️ Rematch
+▪️ Disconnect
+```
+
+💾 `Data Structure`
 ```
 data 
 ├── game 
@@ -28,10 +72,10 @@ data
 ├── disconnect (function)
 ```
 
-`💾 Cache Structure - Server`
+💾 `Cache Structure`
 ```
 cache
-├── id (string)
+├── room (string)
 │   ├── ready (boolean)
 │   ├── host
 │   │   ├── turn (boolean)
@@ -40,4 +84,20 @@ cache
 │   ├── guest
 │   │   ├── id (string)
 │   │   ├── plays (array)
+```
+
+## Front End
+
+🔄 `Event Listeners`
+
+```
+▪️ Clear
+▪️ End
+▪️ Player
+▪️ Rematch
+▪️ Total
+▪️ Room
+▪️ Play
+▪️ Invite
+▪️ Message
 ```
