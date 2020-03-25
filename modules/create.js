@@ -1,9 +1,9 @@
-module.exports = create = (data, socket) => {
+module.exports = (data, socket) => {
     let room = data.game.code();
     let oldRoom = Object.keys(socket.rooms)[0];
     socket.leave(oldRoom);
     socket.join(room);
-    socket.emit('reset');
+    socket.emit('clear');
     socket.emit('invite', room);
     socket.emit('total', 1);
     socket.emit('room', room);

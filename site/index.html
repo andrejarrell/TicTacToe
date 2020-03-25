@@ -17,19 +17,19 @@
             </div>
             <table>
                 <tr>
-                    <td id="a3" onclick="play('a3')"></td>
-                    <td id="b3" class="vertical" onclick="play('b3')"></td>
-                    <td id="c3" onclick="play('c3')"></td>
+                    <td id="a3" onclick="play(sessionStorage.game, 'a3')"></td>
+                    <td id="b3" class="vertical" onclick="play(sessionStorage.game, 'b3')"></td>
+                    <td id="c3" onclick="play(sessionStorage.game, 'c3')"></td>
                 </tr>
                 <tr>
-                    <td id="a2" class="horizontal" onclick="play('a2')"></td>
-                    <td id="b2" class="vertical horizontal" onclick="play('b2')"></td>
-                    <td id="c2" class="horizontal" onclick="play('c2')"></td>
+                    <td id="a2" class="horizontal" onclick="play(sessionStorage.game, 'a2')"></td>
+                    <td id="b2" class="vertical horizontal" onclick="play(sessionStorage.game, 'b2')"></td>
+                    <td id="c2" class="horizontal" onclick="play(sessionStorage.game, 'c2')"></td>
                 </tr>
                 <tr>
-                    <td id="a1" onclick="play('a1')"></td>
-                    <td id="b1" class="vertical" onclick="play('b1')"></td>
-                    <td id="c1" onclick="play('c1')"></td>
+                    <td id="a1" onclick="play(sessionStorage.game, 'a1')"></td>
+                    <td id="b1" class="vertical" onclick="play(sessionStorage.game, 'b1')"></td>
+                    <td id="c1" onclick="play(sessionStorage.game, 'c1')"></td>
                 </tr>
             </table>
             <div id="menu">
@@ -38,6 +38,7 @@
                         ℹ️ Welcome to TicTacToe!<br>⚡ Powered by Web Sockets
                     </p>
                 </div>
+                <button id="rematch" type="button" class="btn btn-success m-1" onclick="rematch(sessionStorage.game)" hidden>Rematch</button>
                 <button type="button" class="btn btn-primary m-1" onclick="create()">Create Game</button>
                 <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#join">Join Game</button>
             </div>
@@ -79,7 +80,7 @@
                     <div id="invite-code" class="modal-body" align="center"></div>
                     <div class="modal-footer justify-content-center">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Decline</button>
-                        <button id="invite-button" type="button" class="btn btn-primary" data-dismiss="modal" onclick="join(">Accept</button>
+                        <button id="invite-button" type="button" class="btn btn-primary" data-dismiss="modal">Accept</button>
                     </div>
                 </div>
             </div>

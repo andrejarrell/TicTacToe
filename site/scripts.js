@@ -1,13 +1,20 @@
 let socket = io();
 
-let join = code => socket.emit('join', code);
 let create = () => socket.emit('create');
-let play = position => socket.emit('play', position);
+let join = code => socket.emit('join', code);
+let rematch = room => socket.emit('rematch', room);
+let play = (position, room) => socket.emit('play', position, room);
 
-socket.on('reset', () => $('.picture').remove());
-socket.on('room', room => $('#room').text(`🔑 ${room}`));
+socket.on('clear', () => $('.picture').remove());
+socket.on('end', () => $('#rematch').removeAttr('hidden'));
 socket.on('player', name => $('#player').text(`👤 ${name}`));
+socket.on('rematch', () => $('#rematch').attr('hidden', 'true'));
 socket.on('total', number => $('#total').text(`👥 ${number}/2`));
+
+socket.on('room', room => {
+    $('#room').text(`🔑 ${room}`);
+    sessionStorage.game = room;
+});
 
 socket.on('play', (position, player) => {
     let picture = player === 'host' ? 'images/x.png' : 'images/o.png';

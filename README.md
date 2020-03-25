@@ -22,6 +22,8 @@ data
 │   ├── win (function)
 │   ├── tie (function)
 ├── create (function)
+├── rematch (function)
+├── disconnect (function)
 ```
 
 `Cache Structure`

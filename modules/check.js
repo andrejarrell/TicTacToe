@@ -1,4 +1,4 @@
-module.exports = check = {
+module.exports = {
     play: (game, position) => {
         let plays = [...game.host.plays, ...game.guest.plays];
         return plays.includes(position) ? true : false;

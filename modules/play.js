@@ -1,5 +1,4 @@
-module.exports = play = (data, io, socket, position) => {
-    let room = Object.keys(socket.rooms)[0];
+module.exports = (data, io, socket, room, position) => {
     let game = data.game.find(room);
     if (!game) return socket.emit('message', 'warning', 'Create or join a game!');
     if (!game.ready) return socket.emit('message', 'warning', 'Waiting for guest to join!');
@@ -17,7 +16,7 @@ module.exports = play = (data, io, socket, position) => {
         if (data.check.win(game, data.game.wins, 'host')) {
             io.to(room).emit('message', 'success', `Host is the winner!`);
             io.to(room).emit('play', position, 'host');
-            data.game.end(room);
+            data.game.end(room, io);
         } else {
             io.to(room).emit('play', position, 'host');
             io.to(room).emit('message', 'success', `Host played ${position}. Guest it\'s your turn!`);
@@ -30,7 +29,7 @@ module.exports = play = (data, io, socket, position) => {
         if (data.check.win(game, data.game.wins, 'guest')) {
             io.to(room).emit('message', 'success', `Guest is the winner!`);
             io.to(room).emit('play', position, 'guest');
-            data.game.end(room);
+            data.game.end(room, io);
         } else {
             io.to(room).emit('play', position, 'guest');
             io.to(room).emit('message', 'success', `Guest played ${position}. Host it\'s your turn!`);

@@ -1,4 +1,4 @@
-module.exports = game = {
+module.exports = g = {
     cache: {},
     wins: [
         ['a1', 'a2', 'a3'], ['b1', 'b2', 'b3'],
@@ -16,8 +16,15 @@ module.exports = game = {
         return entries.join('');
     },
     find: room => {
-        let games = Object.keys(game.cache);
-        return games.includes(room) ? game.cache[room] : null;
+        let games = Object.keys(g.cache);
+        return games.includes(room) ? g.cache[room] : null;
     },
-    end: room => delete game.cache[room]
+    end: (room, io) => {
+        let game = g.cache[room];
+        game.ready = false;
+        game.host.turn = true;
+        game.host.plays = [];
+        game.guest.plays = [];
+        io.to(room).emit('end');
+    }
 };
