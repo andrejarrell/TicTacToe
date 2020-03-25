@@ -4,7 +4,9 @@
 
 # Welcome to TicTacToe
 
-⚒️ This game was created with `socket.io` and `express`
+Front End Includes: `socket.io` + `express`
+
+Back End Includes: `jquery` + `bootstrap` + `socket.io`
 
 `💾 Data Structure - Server`
 ```
