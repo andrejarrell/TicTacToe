@@ -1,7 +1,7 @@
 module.exports = (data, io, socket, room, position) => {
     let game = data.game.find(room);
     if (!game) return socket.emit('message', 'warning', 'Create or join a game!');
-    if (!game.ready) return socket.emit('message', 'warning', 'Waiting for guest to join!');
+    if (!game.ready) return socket.emit('message', 'warning', 'Game is not ready!');
     let { host, guest } = game;
     if (host.turn) {
         if (host.id !== socket.id) return socket.emit('message', 'warning', 'It\'s not your turn!');
