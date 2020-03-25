@@ -4,9 +4,9 @@
 
 # Welcome to TicTacToe
 
-Front End Includes: `socket.io` + `express`
+Back End Includes: `socket.io` + `express`
 
-Back End Includes: `jquery` + `bootstrap` + `socket.io`
+Front End Includes: `jquery` + `bootstrap` + `socket.io`
 
 `💾 Data Structure - Server`
 ```
