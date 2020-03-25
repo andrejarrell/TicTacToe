@@ -15,10 +15,6 @@ module.exports = g = {
         };
         return entries.join('');
     },
-    find: room => {
-        let games = Object.keys(g.cache);
-        return games.includes(room) ? g.cache[room] : null;
-    },
     end: (room, io) => {
         let game = g.cache[room];
         game.ready = false;
@@ -26,5 +22,6 @@ module.exports = g = {
         game.host.plays = [];
         game.guest.plays = [];
         io.to(room).emit('end');
-    }
+    },
+    delete: room => delete g.cache[room]
 };

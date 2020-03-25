@@ -1,5 +1,5 @@
 module.exports = (data, io, socket, room) => {
-    let game = data.game.find(room);
+    let game = data.game.cache[room];
     if (game && socket.id !== game.host.id) {
         let oldRoom = Object.keys(socket.rooms)[0];
         socket.leave(oldRoom);

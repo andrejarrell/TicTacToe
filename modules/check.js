@@ -1,7 +1,7 @@
 module.exports = {
     play: (game, position) => {
         let plays = [...game.host.plays, ...game.guest.plays];
-        return plays.includes(position) ? true : false;
+        return plays.includes(position) || false;
     },
     win: (game, wins, player) => {
         for (let combo of wins) {
@@ -16,6 +16,6 @@ module.exports = {
     },
     tie: game => {
         let plays = [...game.host.plays, ...game.guest.plays];
-        return plays.length === 9 ? true : false;
+        return plays.length === 9 || false;
     }
 };
