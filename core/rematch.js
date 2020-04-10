@@ -14,7 +14,6 @@ module.exports = (data, type) => {
         if (game.ready) return;
         if (socket.id !== guest.id) return;
         if (game.rematch !== 'requested') return;
-        io.to(host.id).emit('restart');
         io.to(room).emit('clear');
         io.to(room).emit('message', 'success', 'Rematch started! Host starts!');
         host.turn = true;

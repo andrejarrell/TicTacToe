@@ -1,17 +1,16 @@
 {
   "name": "tictactoe",
-  "version": "3.0.0",
-  "main": "server.js",
+  "version": "3.1.0",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "debug": "nodemon server.js -e js,css,md,html,png,json"
+    "start": "node app.js",
+    "debug": "nodemon app.js -e js,css,md,html,png,json"
   },
   "author": "Andre Jarrell <mail@andrejarrell.com> (https://andrejarrell.com)",
   "license": "MIT",
   "dependencies": {
     "capital-case": "^1.0.3",
     "express": "^4.17.1",
-    "keyv": "^4.0.0",
     "socket.io": "^2.3.0",
     "store": "^2.0.12"
   },
