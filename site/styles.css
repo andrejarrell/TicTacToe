@@ -1,6 +1,29 @@
+@import url(https://fonts.googleapis.com/css?family=Baloo+2);
+@import url(vendor/bootstrap.min.css);
+
+:root {
+    --text-color: #212529;
+    --border-color: #000000;
+    --background-color: #FFFFFF;
+    --modal-border-color: #E9ECEF;
+}
+
+[data-theme="dark"] {
+    --text-color: #DAD7D2;
+    --border-color: #666666;
+    --background-color: #181a1b;
+    --modal-border-color: #666666;
+}
+
+body {
+    font-family: 'Baloo 2', cursive !important;
+    background-color: var(--background-color) !important;
+}
+
 h1 {
     text-align: center;
     margin-bottom: 0px;
+    color: var(--text-color) !important;
 }
 
 td {
@@ -12,14 +35,20 @@ table {
     margin: 5px auto;
 }
 
+input {
+    color: var(--text-color) !important;
+    border: 1px solid var(--modal-border-color) !important;
+    background-color: var(--background-color) !important;
+}
+
 .vertical {
-    border-left: 2px solid black;
-    border-right: 2px solid black;
+    border-left: 2px solid var(--border-color) !important;
+    border-right: 2px solid var(--border-color) !important;
 }
   
 .horizontal {
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-top: 2px solid var(--border-color) !important;
+    border-bottom: 2px solid var(--border-color) !important;
 }
   
 .picture {
@@ -29,13 +58,41 @@ table {
 .alert {
     display: inline-block;
 }
+
+.container {
+    display: inline;
+}
+
+.modal-content {
+    color: var(--text-color) !important;
+    background-color: var(--background-color) !important;
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--modal-border-color) !important;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--modal-border-color) !important;
+}
+
+.close {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
   
 #menu {
     text-align: center;
     margin: 20px;
 }
 
+#footer {
+    text-align: center;
+    color: var(--text-color) !important;
+}
+
 #info {
+    color: var(--text-color) !important;
     text-align: center;
 }
 
@@ -45,29 +102,6 @@ table {
     display: inline-block;
 }
 
-/* For github corner */
-
-.github-corner:hover .octo-arm{
-    animation:octocat-wave 560ms ease-in-out
-}
-
-@keyframes octocat-wave{
-    0%,100%{
-        transform:rotate(0)
-    }
-    20%,60%{
-        transform:rotate(-25deg)
-    }
-    40%,80%{
-        transform:rotate(10deg)
-    }
-}
-
-@media (max-width:500px){
-    .github-corner:hover .octo-arm{
-        animation:none
-    }
-    .github-corner .octo-arm{
-        animation:octocat-wave 560ms ease-in-out
-    }
+#theme {
+    padding: 7px;
 }

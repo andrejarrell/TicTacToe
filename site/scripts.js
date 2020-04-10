@@ -2,32 +2,26 @@ let socket = io();
 
 let create = () => socket.emit('create');
 let join = code => socket.emit('join', code);
-let rematch = room => socket.emit('rematch', room);
-let play = (position, room) => socket.emit('play', position, room);
+let rematch = () => socket.emit('rematch');
+let play = position => socket.emit('play', position);
 
 socket.on('clear', () => $('.picture').remove());
-socket.on('end', () => $('#rematch').removeAttr('hidden'));
-socket.on('player', name => $('#player').text(`👤 ${name}`));
-socket.on('rematch', () => $('#rematch').attr('hidden', 'true'));
-socket.on('total', number => $('#total').text(`👥 ${number}/2`));
+socket.on('request', () => $('#rematch').modal('show'));
+socket.on('user', name => $('#user').text(`👤 ${name}`));
+socket.on('room', room => $('#room').text(`🔑 ${room}`));
+socket.on('end', () => $('#rematch-button').removeAttr('hidden'));
+socket.on('players', number => $('#players').text(`👥 ${number}/2`));
+socket.on('restart', () => $('#rematch-button').attr('hidden', 'true'));
 
-socket.on('room', room => {
-    $('#room').text(`🔑 ${room}`);
-    sessionStorage.game = room;
+socket.on('play', (position, user) => {
+    $(`#${position}`).prepend(`<img class="picture" src="images/${user}.png">`);
 });
 
-socket.on('play', (position, player) => {
-    let picture = player === 'host' ? 'images/x.png' : 'images/o.png';
-    $(`#${position}`).prepend(`<img class="picture" src="${picture}">`);
-});
-
-socket.on('invite', room => {
-    let link = `${document.URL}?g=${room}`;
+socket.on('create', room => {
+    let link = `${document.location.origin}?i=${room}`;
     $('#message').attr('class', `alert alert-success`);
-    $('#message').html(`
-        💬 Created game: ${room}<br>
-        🔗 Created invite link: <a target="_blank" href="${link}">${room}</a>
-    `);
+    $('#message').html(`💬 Created game: ${room}<br>
+    🔗 Created invite link: <a target="_blank" href="${link}">${room}</a>`);
 });
 
 socket.on('message', (type, string) => {
@@ -36,19 +30,32 @@ socket.on('message', (type, string) => {
     $('#message').text(`${emoji} ${string}`);
 });
 
-let getParam = item => {
-    var query = window.location.search.substring(1);
-    var vars = query.split("&");
-    for (let i=0; i<vars.length; i++) {
-        let pair = vars[i].split("=");
-        if (pair[0] == item) return pair[1];
-    };
-    return false;
+rematch = {
+    request: () => socket.emit('rematch', 'request'),
+    accept: () => socket.emit('rematch', 'accept')
 };
 
-let invite = getParam('g');
+let invite = document.location.search.substring(3);
 if (invite) {
     $('#invite-code').text(`You've been invited to a game!`);
-    $('#invite').modal({show: true});
+    $('#invite').modal('show');
     $('#invite-button').attr('onclick', `join('${invite}')`);
+};
+
+// Dark Mode
+if (localStorage.theme === 'dark') {
+    $('#theme').text('🌙 Toggle Theme');
+    $('body').attr('data-theme', 'dark');
+};
+
+let toggle = () => {
+    if (localStorage.theme === 'light') {
+        $('#theme').text('🌙 Toggle Theme');
+        $('body').attr('data-theme', 'dark');
+        localStorage.theme = 'dark';
+    } else {
+        $('#theme').text('☀️ Toggle Theme');
+        $('body').attr('data-theme', 'light');
+        localStorage.theme = 'light';
+    };
 };

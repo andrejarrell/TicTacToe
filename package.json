@@ -1,6 +1,6 @@
 {
   "name": "tictactoe",
-  "version": "2.2.1",
+  "version": "3.0.0",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,8 +9,11 @@
   "author": "Andre Jarrell <mail@andrejarrell.com> (https://andrejarrell.com)",
   "license": "MIT",
   "dependencies": {
+    "capital-case": "^1.0.3",
     "express": "^4.17.1",
-    "socket.io": "^2.3.0"
+    "keyv": "^4.0.0",
+    "socket.io": "^2.3.0",
+    "store": "^2.0.12"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
