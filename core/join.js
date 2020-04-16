@@ -1,5 +1,4 @@
-module.exports = (data, room) => {
-    let { cache, socket, io, find, cap } = data;
+module.exports = ({ cache, socket, io, find, cap }, room) => {
     let game = cache.get(room);
     if (game && socket.id !== game.host.id) {
         let oldRoom = find.oldRoom(socket);

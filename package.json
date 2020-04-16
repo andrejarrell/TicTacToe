@@ -1,10 +1,10 @@
 {
   "name": "tictactoe",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "debug": "nodemon app.js -e js,css,md,html,png,json"
+    "dev": "nodemon app.js -e js,css,md,html,png,json"
   },
   "author": "Andre Jarrell <mail@andrejarrell.com> (https://andrejarrell.com)",
   "license": "MIT",

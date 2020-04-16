@@ -1,5 +1,4 @@
-module.exports = (data, position) => {
-    let { find, cache, socket, check, io, cap, end } = data;
+module.exports = ({ find, cache, socket, check, io, cap, end }, position) => {
     let room = find.room(socket, cache);
     let game = cache.get(room);
     if (!game) return socket.emit('message', 'warning', 'Create or join a game!');

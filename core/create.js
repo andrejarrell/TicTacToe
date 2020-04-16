@@ -1,5 +1,4 @@
-module.exports = data => {
-    let { generate, find, socket, cache, cap } = data;
+module.exports = ({ generate, find, socket, cache, cap }) => {
     let room = generate();
     let oldRoom = find.oldRoom(socket);
     socket.join(room);

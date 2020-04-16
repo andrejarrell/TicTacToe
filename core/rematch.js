@@ -1,5 +1,4 @@
-module.exports = (data, type) => {
-    let { find, socket, cache, io } = data;
+module.exports = ({ find, socket, cache, io }, type) => {
     let room = find.room(socket, cache);
     let game = cache.get(room);
     let { host, guest } = game;

@@ -37,4 +37,4 @@
 
    - Production `npm run start`
 
-   - Debug `npm run debug`
+   - Development `npm run dev`
