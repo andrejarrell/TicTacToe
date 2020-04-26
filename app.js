@@ -6,6 +6,8 @@ let fs = require('fs');
 
 app.use('/', express.static(__dirname + '/site'));
 
+// Gugu is writing here :)
+
 io.on('connection', socket => {
     let data = { 
         io: io, 
