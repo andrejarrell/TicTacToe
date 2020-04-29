@@ -12,12 +12,11 @@ module.exports = {
         ];
         for (let combo of wins) {
             let plays = game[player].plays;
-            matches = [];
-            for (let position of plays) {
-                if (combo.includes(position)) matches.push(position);
-            };
+            let matches = plays.filter(position => {
+                return combo.includes(position);
+            });
             if (matches.length === 3) return true;
-        }
+        };
         return false;
     },
     tie: game => {

@@ -10,9 +10,7 @@ module.exports = {
     oldRoom: socket => {
         let rooms = Object.keys(socket.rooms);
         if (rooms.length > 1) {
-            let index = rooms.indexOf(socket.id);
-            rooms.splice(index, 1);
-            return rooms[0];
+            return rooms.filter(r => r !== socket.id);
         } else {
             return null;
         };
