@@ -1,20 +1,20 @@
 {
   "name": "tictactoe",
-  "version": "3.3.0",
+  "version": "4.0.0",
   "main": "app.js",
+  "description": "TicTacToe with Socket.io",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js -e js,css,md,html,png,json"
+    "dev": "nodemon app.js"
   },
   "author": "Andre Jarrell <mail@andrejarrell.com> (https://andrejarrell.com)",
   "license": "MIT",
   "dependencies": {
-    "capital-case": "^1.0.3",
     "express": "^4.17.1",
-    "socket.io": "^2.3.0",
-    "store": "^2.0.12"
+    "lodash": "^4.17.19",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.4"
   }
 }

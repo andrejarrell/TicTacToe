@@ -1,16 +1,18 @@
-module.exports = ({ find, socket, cache, io }) => {
-    let room = find.room(socket, cache);
-    if (room) {
-        let game = cache.get(room);
-        let { host, guest } = game;
+let cache = require('../utils/cache');
+let { find } = require('../utils/game');
+
+module.exports = (socket, io) => {
+    let game = find(socket);
+    if (game) {
+        let { host, guest, key } = game;
         if (socket.id === guest.id) {
             io.to(host.id).emit('players', 1);
-            io.to(host.id).emit('message', 'warning', 'Guest left game!');
-            cache.remove(room);
+            io.to(host.id).emit('message', 'danger', 'Guest left game!');
+            cache.delete(key);
         } else {
             io.to(guest.id).emit('players', 1);
-            io.to(guest.id).emit('message', 'warning', 'Host left game!');
-            cache.remove(room);
+            io.to(guest.id).emit('message', 'danger', 'Host left game!');
+            cache.delete(key);
         };
     };
 };

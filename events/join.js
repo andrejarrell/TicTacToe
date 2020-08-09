@@ -1,19 +1,22 @@
-module.exports = ({ cache, socket, io, find, cap }, room) => {
-    let game = cache.get(room);
+let _ = require('lodash');
+let cache = require('../utils/cache');
+
+module.exports = (socket, io, key) => {
+    let game = cache.get(key);
     if (game && socket.id !== game.host.id) {
-        let oldRoom = find.oldRoom(socket);
-        socket.join(room);
+        let rooms = _.keys(socket.rooms);
+        let oldRoom = rooms.filter(r => r !== socket.id);
+        socket.join(key);
+        socket.leave(oldRoom);
         socket.emit('clear');
-        io.to(room).emit('message', 'success', 'Both players are ready! Host starts!');
-        io.to(room).emit('players', 2);
-        socket.emit('room', room);
-        socket.emit('user', cap('guest'));
+        io.to(key).emit('message', 'info', 'Both players are ready! Host starts!');
+        io.to(key).emit('players', 2);
+        socket.emit('key', key);
+        socket.emit('user', 'Guest');
         game.guest.id = socket.id;
         game.ready = true;
-        game.host.turn = true;
-        cache.set(room, game);
-        socket.leave(oldRoom);
+        cache.set(key, game);
     } else {
-        socket.emit('message', 'warning', 'Invalid code!');
+        socket.emit('message', 'danger', 'Invalid code!');
     };
 };

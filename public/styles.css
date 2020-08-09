@@ -1,0 +1,44 @@
+@import url(neon.min.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css);
+
+td {
+    width: 100px;
+    height: 100px;
+}
+  
+table {
+    margin: 5px auto;
+}
+
+.vert {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+}
+  
+.horiz {
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+  
+.img {
+    max-width: 100%;
+}
+
+.alert {
+    display: inline-block;
+}
+
+.container {
+    display: inline;
+}
+  
+#menu {
+    margin: 20px;
+}
+
+#info p {
+    padding: 0px 5px 0px 5px;
+    vertical-align: top;
+    display: inline-block;
+}

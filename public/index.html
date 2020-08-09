@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tic Tac Toe</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="shortcut icon" href="images/logo.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div id="game" class="container text-center">
+            <h1>Tic Tac Toe</h1>
+            <div id="info">
+                <p>👤 {{ info.user }}</p>
+                <p>🔑 {{ info.key }}</p>
+                <p>👥 {{ info.players }}/2</p>
+            </div>
+            
+            <table>
+                <tr>
+                    <td id="a3" @click="play"></td>
+                    <td id="b3" class="vert" @click="play"></td>
+                    <td id="c3" @click="play"></td>
+                </tr>
+                <tr>
+                    <td id="a2" class="horiz" @click="play"></td>
+                    <td id="b2" class="vert horiz" @click="play"></td>
+                    <td id="c2" class="horiz" @click="play"></td>
+                </tr>
+                <tr>
+                    <td id="a1" @click="play"></td>
+                    <td id="b1" class="vert" @click="play"></td>
+                    <td id="c1" @click="play"></td>
+                </tr>
+            </table>
+
+            <div id="menu">
+                <div>
+                    <p id="msg" class="alert alert-info">
+                        👋 Welcome to TicTacToe!<br>
+                        ⚡ Powered by Socket.io<br>
+                        <img src="images/octocat.png" width="20" height="20">
+                        Open Source on 
+                        <a href="https://github.com/andrejarrell/TicTacToe" target="_blank">GitHub</a>
+                    </p>
+                </div>
+                <button id="rematch-btn" type="button" class="btn btn-success btn-shadow m-1" @click="rematch('request')" hidden>Rematch</button>
+                <button type="button" class="btn btn-primary btn-shadow m-1" @click="create">Create Game</button>
+                <button type="button" class="btn btn-primary btn-shadow m-1" data-toggle="modal" data-target="#join">Join Game</button>
+            </div>
+
+            <div id="footer">
+                <p>
+                    Created by 
+                    <a href="https://andrejarrell.com" target="_blank">
+                    @andrejarrell
+                    </a>
+                </p>
+            </div>
+
+            <div class="modal fade" id="join" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Join Game</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input v-model="key" type="text" class="form-control" placeholder="Enter game key">
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="join">Join</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="invite" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Game Invite</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" align="center">
+                            You've been invited to a game!
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Decline</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="join">Accept</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="rematch" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Rematch Request</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" align="center">Host requested rematch!</div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Decline</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="rematch('accept')">Accept</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="game.js"></script>
+    </body>
+</html>

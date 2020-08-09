@@ -1,29 +1,24 @@
-<div>
-  <p>
-    <a href="https://glitch.com/edit/#!/ws-ttt">
-      <img src="https://cdn.glitch.com/2bdfb3f8-05ef-4035-a06e-2043962a3a13%2Fview-source%402x.png" height="33">
-    </a>
-    <a href="https://glitch.com/edit/#!/remix/ws-ttt">
-      <img src="https://cdn.glitch.com/2bdfb3f8-05ef-4035-a06e-2043962a3a13%2Fremix%402x.png" height="33">
-    </a>
-  </p>
-</div>
+<a href="https://glitch.com/edit/#!/tttjs">
+   <img alt="View Source" src="https://cdn.glitch.com/2bdfb3f8-05ef-4035-a06e-2043962a3a13%2Fview-source%402x.png" height="33">
+</a>
+<a href="https://glitch.com/edit/#!/remix/tttjs">
+   <img alt="Remix This" src="https://cdn.glitch.com/2bdfb3f8-05ef-4035-a06e-2043962a3a13%2Fremix%402x.png" height="33">
+</a>
 
-# Welcome to Tic Tac Toe
+# Welcome to TicTacToe
 
 ## Features:
 
-- [x] Rematches
+- [x] Multiplayer
 - [x] Invite Links
 - [x] Modal Prompts
-- [x] Game Caching
-- [x] Toggle Theme
+- [x] Rematches
 
 ## Tools used:
 
-⚒️ Back End: `socket.io` + `express` + `store`
+⚒️ Back End: [express](https://expressjs.com) + [socket.io](https://socket.io) + [lodash](https://lodash.com)
 
-⚒️ Front End: `jquery` + `bootstrap` + `socket.io`
+⚒️ Front End: [bootstrap](https://getbootstrap.com) + [socket.io](https://socket.io) + [vue](https://vuejs.org)
 
 ## Setup for running locally:
 
@@ -35,6 +30,6 @@
 
 4. Run application
 
-   - Production `npm run start`
+   - Start `npm start`
 
-   - Development `npm run dev`
+   - Dev `npm run dev`

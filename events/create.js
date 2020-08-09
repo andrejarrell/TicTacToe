@@ -1,17 +1,23 @@
-module.exports = ({ generate, find, socket, cache, cap }) => {
-    let room = generate();
-    let oldRoom = find.oldRoom(socket);
-    socket.join(room);
-    socket.leave(oldRoom);
+let _ = require('lodash');
+let cache = require('../utils/cache');
+let { keyGen } = require('../utils/game');
+
+module.exports = socket => {
+    let key = keyGen();
     socket.emit('clear');
-    socket.emit('create', room);
+    socket.emit('create', key);
     socket.emit('players', 1);
-    socket.emit('room', room);
-    socket.emit('user', cap('host'));
-    cache.set(room, {
+    socket.emit('key', key);
+    socket.emit('user', 'Host');
+    let rooms = _.keys(socket.rooms);
+    let oldRoom = rooms.filter(r => r !== socket.id);
+    socket.leave(oldRoom);
+    socket.join(key);
+    cache.set(key, {
+        key,
         ready: false,
         host: {
-            turn: false,
+            turn: true,
             id: socket.id,
             plays: []
         },
@@ -20,6 +26,5 @@ module.exports = ({ generate, find, socket, cache, cap }) => {
             plays: []
         }
     });
-    cache.remove(oldRoom);
-    socket.leave(oldRoom);
+    cache.delete(oldRoom);
 };
