@@ -20,12 +20,13 @@ module.exports = {
     },
 
     find(socket) {
-        if (cache.all()) {
+        if (cache.exists()) {
             let key = _.findKey(cache.all(), g => {
                 return g.host.id === socket.id || g.guest.id === socket.id;
             })
             return cache.get(key);
-        }
+        };
+        return null;
     },
 
     check: {

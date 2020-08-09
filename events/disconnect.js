@@ -7,11 +7,11 @@ module.exports = (socket, io) => {
         let { host, guest, key } = game;
         if (socket.id === guest.id) {
             io.to(host.id).emit('players', 1);
-            io.to(host.id).emit('message', 'danger', 'Guest left game!');
+            io.to(host.id).emit('alert', 'danger', 'Guest left game!');
             cache.delete(key);
         } else {
             io.to(guest.id).emit('players', 1);
-            io.to(guest.id).emit('message', 'danger', 'Host left game!');
+            io.to(guest.id).emit('alert', 'danger', 'Host left game!');
             cache.delete(key);
         };
     };

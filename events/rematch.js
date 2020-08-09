@@ -8,7 +8,7 @@ module.exports = (socket, io, type) => {
         if (game.ready) return;
         if (socket.id !== host.id) return;
         io.to(guest.id).emit('request');
-        io.to(host.id).emit('message', 'info', 'Rematch request sent!');
+        io.to(host.id).emit('alert', 'info', 'Rematch request sent!');
         game.rematch = 'requested';
         cache.set(game.key, game);
     } else if (type === 'accept') {
@@ -16,7 +16,7 @@ module.exports = (socket, io, type) => {
         if (socket.id !== guest.id) return;
         if (game.rematch !== 'requested') return;
         io.to(game.key).emit('clear');
-        io.to(game.key).emit('message', 'info', 'Rematch started! Host starts!');
+        io.to(game.key).emit('alert', 'info', 'Rematch started! Host starts!');
         host.turn = true;
         host.plays = [];
         guest.plays = [];

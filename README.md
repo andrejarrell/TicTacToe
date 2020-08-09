@@ -13,6 +13,7 @@
 - [x] Invite Links
 - [x] Modal Prompts
 - [x] Rematches
+- [x] Chatroom
 
 ## Tools used:
 

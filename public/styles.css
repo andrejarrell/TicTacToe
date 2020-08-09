@@ -1,5 +1,6 @@
 @import url(neon.min.css);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://use.fontawesome.com/releases/v5.6.3/css/all.css);
 @import url(https://cdn.jsdelivr.net/font-hack/2.020/css/hack.min.css);
 
 td {
@@ -27,14 +28,6 @@ table {
 
 .alert {
     display: inline-block;
-}
-
-.container {
-    display: inline;
-}
-  
-#menu {
-    margin: 20px;
 }
 
 #info p {

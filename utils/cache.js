@@ -18,6 +18,10 @@ class Cache {
     all() {
         return this;
     }
+
+    exists() {
+        return this ? true : false;
+    }
 }
 
 module.exports = new Cache;

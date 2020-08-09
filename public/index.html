@@ -7,14 +7,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <div id="game" class="container text-center">
+        <div id="game" class="container text-center mt-4">
             <h1>Tic Tac Toe</h1>
             <div id="info">
-                <p>👤 {{ info.user }}</p>
-                <p>🔑 {{ info.key }}</p>
-                <p>👥 {{ info.players }}/2</p>
+                <p><i class="fas fa-user mr-2"></i> {{ info.user }}</p>
+                <p><i class="fas fa-key mr-2"></i> {{ info.key }}</p>
+                <p><i class="fas fa-users mr-2"></i> {{ info.players }}/2</p>
             </div>
-            
             <table>
                 <tr>
                     <td id="a3" @click="play"></td>
@@ -32,31 +31,73 @@
                     <td id="c1" @click="play"></td>
                 </tr>
             </table>
-
-            <div id="menu">
+            <div id="menu" class="mt-4">
                 <div>
                     <p id="msg" class="alert alert-info">
-                        👋 Welcome to TicTacToe!<br>
-                        ⚡ Powered by Socket.io<br>
-                        <img src="images/octocat.png" width="20" height="20">
-                        Open Source on 
-                        <a href="https://github.com/andrejarrell/TicTacToe" target="_blank">GitHub</a>
+                        <i class="fas fa-smile"></i> Welcome to TicTacToe!<br>
+                        <i class="fas fa-bolt"></i> Powered by Socket.io<br>
+                        <i class="fab fa-github"></i> Open Source on 
+                        <a href="https://github.com/andrejarrell/TicTacToe" target="_blank">
+                            GitHub
+                        </a>
                     </p>
                 </div>
-                <button id="rematch-btn" type="button" class="btn btn-success btn-shadow m-1" @click="rematch('request')" hidden>Rematch</button>
-                <button type="button" class="btn btn-primary btn-shadow m-1" @click="create">Create Game</button>
-                <button type="button" class="btn btn-primary btn-shadow m-1" data-toggle="modal" data-target="#join">Join Game</button>
+                <button id="rematch-btn" class="btn btn-success btn-shadow m-1" @click="rematch('request')" hidden>Rematch</button>
+                <button class="btn btn-primary btn-shadow m-1" @click="create">
+                    <span class="fas fa-plus mr-1"></span>
+                    Create
+                </button>
+                <button class="btn btn-primary btn-shadow m-1" data-toggle="modal" data-target="#join">
+                    <span class="fas fa-key mr-1"></span>
+                    Join
+                </button>
+                <button class="btn btn-primary btn-shadow m-1" @click="read" data-toggle="modal" data-target="#chat">
+                    <span class="fas fa-comment-alt mr-1"></span>
+                    {{ message.unread }} Unread
+                </button>
             </div>
-
-            <div id="footer">
+            <div id="footer" class="mt-3">
                 <p>
                     Created by 
                     <a href="https://andrejarrell.com" target="_blank">
-                    @andrejarrell
+                        @andrejarrell
                     </a>
                 </p>
             </div>
-
+            <div class="modal fade" id="chat" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Online Chat</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body pb-0">
+                            <div v-if="!message.total.length">
+                                <div class="alert alert-danger" role="alert">
+                                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                                    No messages here!
+                                </div>
+                            </div>
+                            <div v-for="msg in message.total">
+                                <div class="alert alert-info" role="alert">
+                                    <i class="fas fa-comment-alt mr-2"></i>
+                                    {{ msg.user }} - {{ msg.content }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <div class="input-group">
+                                <input type="text" v-model="message.content" class="form-control" placeholder="Message">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" @click="send">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="modal fade" id="join" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
                     <div class="modal-content">
@@ -75,7 +116,24 @@
                     </div>
                 </div>
             </div>
-
+            <div class="modal fade" id="join" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Join Game</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input v-model="key" type="text" class="form-control" placeholder="Enter game key">
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" @click="join">Join</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="modal fade" id="invite" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
                     <div class="modal-content">
@@ -95,7 +153,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="modal fade" id="rematch" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
                     <div class="modal-content">
@@ -113,7 +170,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>

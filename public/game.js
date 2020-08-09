@@ -7,8 +7,17 @@ let game = new Vue({
             key: 'N/A',
             players: 0
         },
+        message: {
+            unread: 0,
+            content: '',
+            total: []
+        }
     },
     methods: {
+        read() {
+            this.message.unread = 0;
+        },
+
         rematch(type) {
             socket.emit('rematch', type);
         },
@@ -24,6 +33,15 @@ let game = new Vue({
 
         play(event) {
             socket.emit('play', event.target.id);
+        },
+
+        send() {
+            socket.emit('chat', this.message.content);
+        },
+
+        onChat(user, content) {
+            this.message.total.push({ user, content });
+            user === this.info.user ? null : this.message.unread += 1;
         },
 
         onClear() {
@@ -46,26 +64,34 @@ let game = new Vue({
         onCreate(key) {
             let link = `${location.origin}?i=${key}`;
             $('#msg').attr('class', `alert alert-info`);
-            $('#msg').html(`🔗 Invite link: 
-            <a href="${link}" target="_blank">
-            ${key}</a><br>💬 New game created!`);
+            $('#msg').html(`<i class="fas fa-link"></i> Invite link: 
+            <a href="${link}" target="_blank">${key}</a><br>
+            <i class="fas fa-comment-alt"></i> New game created!`);
         },
 
-        onMessage(type, string) {
-            let emoji = type === 'info' ? '💬' : '⚠️';
+        onAlert(type, msg) {
+            let icon = type === 'info' ? 'comment-alt' : 'exclamation-triangle';
             $('#msg').attr('class', `alert alert-${type}`);
-            $('#msg').text(`${emoji} ${string}`);
+            $('#msg').html(`<i class="fas fa-${icon}"></i> ${msg}`);
         }
-    }
+    },
 });
+
+// Vue.component('chat', {
+//     template: `<div class="alert alert-info" role="alert">
+//         <i class="fas fa-comment-alt mr-2"></i>
+//         {{ msg.user }} - {{ msg.content }}
+//     </div>`
+// });
 
 let socket = io();
 
 socket.on('end', game.onEnd);
 socket.on('play', game.onPlay);
+socket.on('chat', game.onChat);
 socket.on('clear', game.onClear);
+socket.on('alert', game.onAlert);
 socket.on('create', game.onCreate);
-socket.on('message', game.onMessage);
 socket.on('request', game.onRequest);
 
 let { info } = game;

@@ -9,7 +9,7 @@ module.exports = (socket, io, key) => {
         socket.join(key);
         socket.leave(oldRoom);
         socket.emit('clear');
-        io.to(key).emit('message', 'info', 'Both players are ready! Host starts!');
+        io.to(key).emit('alert', 'info', 'Both players are ready! Host starts!');
         io.to(key).emit('players', 2);
         socket.emit('key', key);
         socket.emit('user', 'Guest');
@@ -17,6 +17,6 @@ module.exports = (socket, io, key) => {
         game.ready = true;
         cache.set(key, game);
     } else {
-        socket.emit('message', 'danger', 'Invalid code!');
+        socket.emit('alert', 'danger', 'Invalid code!');
     };
 };
