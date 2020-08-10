@@ -77,13 +77,6 @@ let game = new Vue({
     },
 });
 
-// Vue.component('chat', {
-//     template: `<div class="alert alert-info" role="alert">
-//         <i class="fas fa-comment-alt mr-2"></i>
-//         {{ msg.user }} - {{ msg.content }}
-//     </div>`
-// });
-
 let socket = io();
 
 socket.on('end', game.onEnd);

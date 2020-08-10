@@ -1,6 +1,6 @@
 {
   "name": "tictactoe",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "main": "app.js",
   "description": "TicTacToe with Socket.io",
   "scripts": {
