@@ -34,3 +34,11 @@
    - Start `npm start`
 
    - Dev `npm run dev`
+
+## Screenshots:
+
+<div>
+   <img width="30%" src="https://raw.githubusercontent.com/andrejarrell/TicTacToe/master/screenshots/1.jpg">
+   <img width="30%" src="https://raw.githubusercontent.com/andrejarrell/TicTacToe/master/screenshots/2.jpg">
+   <img width="30%" src="https://raw.githubusercontent.com/andrejarrell/TicTacToe/master/screenshots/3.jpg">
+</div>
