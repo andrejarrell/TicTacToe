@@ -5,9 +5,15 @@
    <img alt="Remix This" src="https://cdn.glitch.com/2bdfb3f8-05ef-4035-a06e-2043962a3a13%2Fremix%402x.png" height="33">
 </a>
 
-# Welcome to TicTacToe
+# 👋 Welcome to TicTacToe
 
-## Features:
+<div>
+   <img width="32%" src="https://raw.githubusercontent.com/andrejarrell/TicTacToe/master/screenshots/1.jpg">
+   <img width="32%" src="https://raw.githubusercontent.com/andrejarrell/TicTacToe/master/screenshots/2.jpg">
+   <img width="32%" src="https://raw.githubusercontent.com/andrejarrell/TicTacToe/master/screenshots/3.jpg">
+</div>
+
+## 🎨 Features:
 
 - [x] Multiplayer
 - [x] Invite Links
@@ -15,13 +21,13 @@
 - [x] Rematches
 - [x] Chatroom
 
-## Tools used:
+## ⚒️ Tools:
 
-⚒️ Back End: [express](https://expressjs.com) + [socket.io](https://socket.io) + [lodash](https://lodash.com)
+Back End: [express](https://expressjs.com) + [socket.io](https://socket.io) + [lodash](https://lodash.com)
 
-⚒️ Front End: [bootstrap](https://getbootstrap.com) + [socket.io](https://socket.io) + [vue](https://vuejs.org)
+Front End: [bootstrap](https://getbootstrap.com) + [socket.io](https://socket.io) + [vue](https://vuejs.org)
 
-## Setup for running locally:
+## Setup:
 
 1. Download repository
 
@@ -34,11 +40,3 @@
    - Start `npm start`
 
    - Dev `npm run dev`
-
-## Screenshots:
-
-<div>
-   <img width="30%" src="https://raw.githubusercontent.com/andrejarrell/TicTacToe/master/screenshots/1.jpg">
-   <img width="30%" src="https://raw.githubusercontent.com/andrejarrell/TicTacToe/master/screenshots/2.jpg">
-   <img width="30%" src="https://raw.githubusercontent.com/andrejarrell/TicTacToe/master/screenshots/3.jpg">
-</div>
