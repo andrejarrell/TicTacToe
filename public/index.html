@@ -42,7 +42,10 @@
                         </a>
                     </p>
                 </div>
-                <button id="rematch-btn" class="btn btn-success btn-shadow m-1" @click="rematch('request')" hidden>Rematch</button>
+                <button id="rematch-btn" class="btn btn-info btn-shadow m-1" @click="rematch('request')" hidden>
+                    <span class="fas fa-sync-alt mr-1"></span>
+                    Rematch
+                </button>
                 <button class="btn btn-primary btn-shadow m-1" @click="create">
                     <span class="fas fa-plus mr-1"></span>
                     Create
@@ -53,7 +56,8 @@
                 </button>
                 <button class="btn btn-primary btn-shadow m-1" @click="read" data-toggle="modal" data-target="#chat">
                     <span class="fas fa-comment-alt mr-1"></span>
-                    {{ message.unread }} Unread
+                    Chat 
+                    <span class="badge badge-light ml-1" v-if="message.unread">{{ message.unread }}</span>
                 </button>
             </div>
             <div id="footer" class="mt-3">

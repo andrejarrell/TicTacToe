@@ -27,7 +27,7 @@
 
 2. Install [Node.js](https://nodejs.org/en/download)
 
-3. Install dependencies: `npm i`
+3. Install dependencies: `npm ci`
 
 4. Run application
 
