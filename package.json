@@ -2,8 +2,8 @@
   "name": "tictactoe",
   "version": "5.0.0",
   "main": "app.js",
-  "engines": { 
-    "node": "14.x" 
+  "engines": {
+    "node": "14.x"
   },
   "description": "TicTacToe with Socket.io",
   "scripts": {
@@ -15,7 +15,7 @@
   "dependencies": {
     "ejs": "^3.1.5",
     "express": "^4.17.1",
-    "socket.io": "^3.1.0"
+    "socket.io": "^3.1.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
