@@ -23,7 +23,7 @@
 
 ## ⚒️ Tools:
 
-Back End: [express](https://expressjs.com) + [socket.io](https://socket.io) + [lodash](https://lodash.com)
+Back End: [express](https://expressjs.com) + [socket.io](https://socket.io) + [ejs](https://ejs.co)
 
 Front End: [bootstrap](https://getbootstrap.com) + [socket.io](https://socket.io) + [vue](https://vuejs.org)
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tic Tac Toe</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="shortcut icon" href="images/logo.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div id="game" class="container text-center mt-4">
+            <h1>Tic Tac Toe</h1>
+            <div id="info">
+                <p><i class="fas fa-user mr-2"></i> {{ info.user }}</p>
+                <p><i class="fas fa-key mr-2"></i> {{ info.key }}</p>
+                <p><i class="fas fa-users mr-2"></i> {{ info.players }}/2</p>
+            </div>
+            <table id="board">
+                <tr>
+                    <td id="a3" @click="move"></td>
+                    <td id="b3" class="vert" @click="move"></td>
+                    <td id="c3" @click="move"></td>
+                </tr>
+                <tr>
+                    <td id="a2" class="horiz" @click="move"></td>
+                    <td id="b2" class="vert horiz" @click="move"></td>
+                    <td id="c2" class="horiz" @click="move"></td>
+                </tr>
+                <tr>
+                    <td id="a1" @click="move"></td>
+                    <td id="b1" class="vert" @click="move"></td>
+                    <td id="c1" @click="move"></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

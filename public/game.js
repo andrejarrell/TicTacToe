@@ -15,90 +15,88 @@ let game = new Vue({
     },
     methods: {
         read() {
-            this.message.unread = 0;
+            this.message.unread = 0
         },
 
         rematch(type) {
-            socket.emit('rematch', type);
+            socket.emit('rematch', type)
         },
 
         join() {
             clearParams();
-            socket.emit('join', this.key);
+            socket.emit('join', this.key)
         },
 
         create() {
-            socket.emit('create');
+            socket.emit('create')
         },
 
-        play(event) {
-            socket.emit('play', event.target.id);
+        move({ target }) {
+            socket.emit('move', target.id)
         },
 
         send() {
-            socket.emit('chat', this.message.content);
+            socket.emit('message', this.message.content)
         },
 
-        onChat(user, content) {
-            this.message.total.push({ user, content });
-            user === this.info.user ? null : this.message.unread += 1;
+        onMessage(user, content) {
+            this.message.total.push({ user, content })
+            user === this.info.user ? null : this.message.unread += 1
         },
 
         onClear() {
-            $('.img').remove();
-            $('#rematch-btn').attr('hidden', 'true');
+            $('.img').remove()
+            $('#rematch-btn').attr('hidden', 'true')
         },
 
         onEnd() {
-            $('#rematch-btn').removeAttr('hidden');
+            $('#rematch-btn').removeAttr('hidden')
         },
 
         onRequest() {
-            $('#rematch').modal('show');
+            $('#rematch').modal('show')
         },
 
-        onPlay(position, user) {
-            $(`#${position}`).prepend(`<img class="img" src="images/${user}.png">`);
+        onMove(position, user) {
+            $(`#${position}`).prepend(`<img class="img" src="/images/${user}.png">`)
         },
 
         onCreate(key) {
-            let link = `${location.origin}?i=${key}`;
-            $('#msg').attr('class', `alert alert-info`);
-            $('#msg').html(`<i class="fas fa-link"></i> Invite link: 
+            let link = `${location.origin}?i=${key}`
+            $('#msg').attr('class', `alert alert-info`)
+            $('#msg').html(`<i class="fas fa-link mr-2"></i> Invite link: 
             <a href="${link}" target="_blank">${key}</a><br>
-            <i class="fas fa-comment-alt"></i> New game created!`);
+            <i class="fas fa-comment-alt mr-2"></i> New game created!`)
         },
 
         onAlert(type, msg) {
-            let icon = type === 'info' ? 'comment-alt' : 'exclamation-triangle';
-            $('#msg').attr('class', `alert alert-${type}`);
-            $('#msg').html(`<i class="fas fa-${icon}"></i> ${msg}`);
+            let icon = type === 'info' ? 'comment-alt' : 'exclamation-triangle'
+            $('#msg').attr('class', `alert alert-${type}`)
+            $('#msg').html(`<i class="fas fa-${icon} mr-2"></i> ${msg}`)
         }
     },
-});
+})
 
-let socket = io();
+let socket = io()
 
-socket.on('end', game.onEnd);
-socket.on('play', game.onPlay);
-socket.on('chat', game.onChat);
-socket.on('clear', game.onClear);
-socket.on('alert', game.onAlert);
-socket.on('create', game.onCreate);
-socket.on('request', game.onRequest);
+socket.on('end', game.onEnd)
+socket.on('move', game.onMove)
+socket.on('clear', game.onClear)
+socket.on('alert', game.onAlert)
+socket.on('create', game.onCreate)
+socket.on('request', game.onRequest)
+socket.on('message', game.onMessage)
 
-let { info } = game;
-socket.on('user', user => info.user = user);
-socket.on('key', key => info.key = key);
-socket.on('players', number => info.players = number);
+let { info } = game
+socket.on('key', key => info.key = key)
+socket.on('user', user => info.user = user)
+socket.on('players', number => info.players = number)
 
-socket.on('log', data => console.log(data));
-
-let params = new URLSearchParams(location.search);
+let params = new URLSearchParams(location.search)
 
 if (params.has('i')) {
-    $('#invite').modal('show');
-    game.key = params.get('i');
-};
+    $('#invite').modal('show')
+    game.key = params.get('i')
+}
 
-let clearParams = () => history.pushState({}, document.title, '/');
+let clearParams = () => history.pushState({}, document.title, '/')

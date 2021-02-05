@@ -1,0 +1,29 @@
+<div id="menu" class="mt-4">
+    <div>
+        <p id="msg" class="alert alert-info">
+            <i class="fas fa-smile mr-2"></i> Welcome to TicTacToe!<br>
+            <i class="fas fa-bolt mr-2"></i> Powered by Socket.io<br>
+            <i class="fab fa-github mr-2"></i> Open Source on 
+            <a href="https://github.com/andrejarrell/TicTacToe" target="_blank">
+                GitHub
+            </a>
+        </p>
+    </div>
+    <button id="rematch-btn" class="btn btn-info btn-shadow m-1" @click="rematch('request')" hidden>
+        <span class="fas fa-sync-alt mr-1"></span>
+        Rematch
+    </button>
+    <button class="btn btn-primary btn-shadow m-1" @click="create">
+        <span class="fas fa-plus mr-1"></span>
+        Create
+    </button>
+    <button class="btn btn-primary btn-shadow m-1" data-toggle="modal" data-target="#join">
+        <span class="fas fa-key mr-1"></span>
+        Join
+    </button>
+    <button class="btn btn-primary btn-shadow m-1" @click="read" data-toggle="modal" data-target="#message">
+        <span class="fas fa-comment-alt mr-1"></span>
+        Chat 
+        <span class="badge badge-light ml-1" v-if="message.unread">{{ message.unread }}</span>
+    </button>
+</div>
